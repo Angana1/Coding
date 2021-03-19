@@ -1,0 +1,83 @@
+vector<int> Solution::flip(string A) 
+{
+    vector<int>result;
+    int n=A.size();
+    
+    if(n==0)
+    {
+        return result;
+    }
+    
+    int zeros=0;
+    for(int i=0;i<n;i++)
+    {
+        if(A[i]=='0')
+        zeros++;
+    }
+    if(zeros==0)//all ones
+    {
+       return result;
+    }
+    
+    
+    int L=1;
+    int Ltemp=1;
+    int R=1;
+    
+    int global_max;
+    int current_max;
+    
+    if(A[0]=='1')
+    {
+        current_max=-1;
+        global_max=-1;
+    }
+    else
+    {
+        current_max=1;
+        global_max=1;
+    }
+    
+    
+    int temp;
+    for(int i=1;i<n;i++)
+    {
+        if(A[i]=='1')
+    {
+        temp=-1;
+    }
+    else
+    {
+        temp=1;
+    }
+    
+    if(temp>(temp+current_max))
+    {
+        current_max=temp;
+        Ltemp=(i+1);
+    }
+    else
+    {
+        current_max=temp+current_max;
+    }
+    
+    if(current_max>global_max)
+    {
+        global_max=current_max;
+        L=Ltemp;
+        R=(i+1);
+    }
+    
+    temp=0;
+    
+    }
+    
+    
+    result.push_back(L);
+    result.push_back(R);
+    
+    return result;
+    
+    
+    
+}
