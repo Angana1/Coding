@@ -1,1 +1,1 @@
-A repository of my C++ programs
+## C++ Coding Repository
